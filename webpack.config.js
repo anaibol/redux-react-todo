@@ -1,6 +1,13 @@
+var webpack = require('webpack');
+
 module.exports = {
-  context: __dirname + "/app",
-  entry: "./app.js",
+  // context: __dirname + "/app",
+   entry: [
+     'webpack-dev-server/client?http://0.0.0.0:8080',
+     'webpack/hot/only-dev-server',
+     "./app/app.js"
+   ],
+ 
 
   output: {
     filename: "app.js",
@@ -16,4 +23,8 @@ module.exports = {
       }
     ],
   },
+  plugins: [  
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  ],
 }

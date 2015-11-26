@@ -1,13 +1,14 @@
-import {ADD_TODO, REMOVE_TODO} from '../actions/todo'
+import * as types from '../constants/todo'
 
 const todoReducer = (state, action) => {
+	console.log(action.type);
 	switch (action.type) {
-		case ADD_TODO:
-			let todos = state
-			return [...todos ]
+		case types.ADD_TODO:
+			let todos = state.todoss
+			return [...todos, action.text]
 
 		default:
-			return state		
+			return state
 	}
 }
 

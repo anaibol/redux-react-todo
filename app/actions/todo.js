@@ -1,7 +1,9 @@
-// export default const todoActions = {
-// 	ADD_TODO: 'ADD_TODO',
-// 	REMOVE_TODO: 'REMOVE_TODO'
-// }
+import *  as types from '../constants/todo'
 
+export function addTodo(text) {
+  return {type: types.ADD_TODO, text}
+}
 
-export default {ADD_TODO: 'ADD_TODO', REMOVE_TODO: 'REMOVE_TODO'}
+export function removeTodo(id) {
+  return {type: types.REMOVE_TODO, id}
+}

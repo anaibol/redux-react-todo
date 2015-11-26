@@ -4,11 +4,12 @@ import {createStore} from 'redux'
 import {Provider} from 'react-redux'
 import todoReducer from './reducers/todo'
 
-// const initialState = ['make a sandwich', 'kiss a grenouille']
+const initialState = {
+	todos: ['make a sandwich', 'kiss a grenouille']
+}
 
 import TodoApp from './containers/TodoApp'
-// initialState
-const store = createStore(todoReducer)
+const store = createStore(todoReducer, initialState)
 
 ReactDOM.render(
   <Provider store={store}>
