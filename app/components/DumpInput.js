@@ -3,9 +3,11 @@ import React, {Component} from 'react'
 class DumpInput extends Component {
 
 	onAddTodo(e) {
-		const text = e.target.value
-		if (e.keyCode !== 13) return
+		console.log(text);
+		const text = e.target.value.trim()
+		if (!text || e.keyCode !== 13) return
 		this.props.onAddTodo(text)
+		e.target.value = ''
 	}
 
 	render() {

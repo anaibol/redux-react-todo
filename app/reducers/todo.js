@@ -1,15 +1,15 @@
 import * as types from '../constants/todo'
 
 const todoReducer = (state, action) => {
-	console.log(action.type);
-	switch (action.type) {
-		case types.ADD_TODO:
-			let todos = state.todoss
-			return [...todos, action.text]
+  switch (action.type) {
+    case types.ADD_TODO:
+      return {
+        todos: [...state.todos, action.text]
+      }
 
-		default:
-			return state
-	}
-}
+      default:
+      return state
+    }
+  }
 
-export default todoReducer
+  export default todoReducer
