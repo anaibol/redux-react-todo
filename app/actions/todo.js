@@ -1,9 +1,9 @@
-import *  as types from '../constants/todo'
+import {ADD_TODO, REMOVE_TODO} from '../constants/todo'
 
 export function addTodo(text) {
-  return {type: types.ADD_TODO, text}
+  return {type: ADD_TODO, text}
 }
 
 export function removeTodo(id) {
-  return {type: types.REMOVE_TODO, id}
+  return {type: REMOVE_TODO, id}
 }
