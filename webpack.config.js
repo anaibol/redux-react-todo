@@ -7,7 +7,14 @@ module.exports = {
      'webpack/hot/only-dev-server',
      "./app/app.js"
    ],
- 
+
+  resolve: {
+    extensions: ['', '.jsx', '.scss', '.js', '.json'],
+    alias: {
+      'react': 'preact-compat',
+      'react-dom': 'preact-compat'
+    }
+  },
 
   output: {
     filename: "app.js",
@@ -23,7 +30,7 @@ module.exports = {
       }
     ],
   },
-  plugins: [  
+  plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
