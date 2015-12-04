@@ -1,5 +1,6 @@
-import {h, Component, render} from 'preact'
-//import ReactDOM from 'react-dom'
+//import {h, Component, render} from 'preact'
+import React from 'preact-compat'
+import ReactDOM from 'preact-compat'
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
 import todoReducer from './reducers/todo'
@@ -11,7 +12,7 @@ const initialState = {
 import TodoApp from './containers/TodoApp'
 const store = createStore(todoReducer, initialState)
 
-render(
+ReactDOM.render(
   <Provider store={store}>
     <TodoApp />
   </Provider>,

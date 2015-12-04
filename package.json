@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js  --recursive",
+    "test": "mocha --compilers js:babel/register --recursive",
     "test:watch": "npm run test -- --watch",
     "start": "webpack-dev-server --progress --colors --watch --hot --inline"
   },
@@ -31,7 +31,8 @@
   },
   "dependencies": {
     "immutable": "^3.7.5",
-    "preact": "^2.3.0",
+    "preact": "^2.5.0",
+    "react": "^0.14.3",
     "react-redux": "^4.0.0",
     "redux": "^3.0.4"
   }
