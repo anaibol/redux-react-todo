@@ -24,6 +24,6 @@ class TodoApp extends Component {
 }
 
 export default connect(
-	state => ({todos: state.todos}), 
+	state => ({todos: state.todos}),
 	dispatch => ({actions: bindActionCreators(TodoActions, dispatch)})
 )(TodoApp)
