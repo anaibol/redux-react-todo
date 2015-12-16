@@ -1,6 +1,10 @@
 import * as types from '../constants/todo'
 
-const todoReducer = (state, action) => {
+const initialState = {
+  todos: ['make a sandwich', 'kiss a grenouille', 'build a todo app']
+}
+
+const todoReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.ADD_TODO:
       return {

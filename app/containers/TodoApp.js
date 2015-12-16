@@ -6,8 +6,8 @@ import TodoList from '../components/TodoList'
 import DumpInput from '../components/DumpInput'
 import * as TodoActions from '../actions/todo'
 
-// @connect(state => ({todos: state.todos})) NOT COMPATIBLE WITH BABEL 6
-class TodoApp extends Component {
+//@connect(state => ({todos: state.todos}))
+export default class TodoApp extends Component {
 
   onAddTodo(text) {
   	this.props.actions.addTodo(text)
@@ -15,10 +15,10 @@ class TodoApp extends Component {
 
   render() {
   	return (
-	  	<div>
-	  		<TodoList todos={this.props.todos} />
-	  		<DumpInput onAddTodo={::this.onAddTodo} />
-	  	</div>
+		<div>
+			<TodoList todos={this.props.todos} />
+			<DumpInput onAddTodo={::this.onAddTodo} />
+		</div>
 	  )
 	}
 }
@@ -27,3 +27,5 @@ export default connect(
 	state => ({todos: state.todos}),
 	dispatch => ({actions: bindActionCreators(TodoActions, dispatch)})
 )(TodoApp)
+
+//export default TodoApp
