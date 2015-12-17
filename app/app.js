@@ -2,15 +2,15 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
-import todoReducer from './reducers/todo'
+import todos from './reducers/todos'
 import {persistStore, autoRehydrate} from 'redux-persist'
 
-import TodoApp from './containers/TodoApp'
-const store = autoRehydrate()(createStore)(todoReducer)
+import Todo from './containers/Todo'
+const store = autoRehydrate()(createStore)(todos)
 persistStore(store)
 
 ReactDOM.render(
   <Provider store={store}>
-    <TodoApp />
+    <Todo />
   </Provider>,
  document.getElementById('app'));

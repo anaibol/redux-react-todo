@@ -11,7 +11,6 @@ class DumpInput extends Component {
 		const text = this.state.value
 		if (!text) return
 		this.props.onAddTodo(text)
-
 		this.state.value = ''
 	}
 

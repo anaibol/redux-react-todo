@@ -7,17 +7,21 @@ import DumpInput from '../components/DumpInput'
 import * as TodoActions from '../actions/todo'
 
 //@connect(state => ({todos: state.todos}))
-export default class TodoApp extends Component {
+export default class Todo extends Component {
 
-  onAddTodo(text) {
-  	this.props.actions.addTodo(text)
-  }
+	addTodo = (text) => {
+		this.props.actions.addTodo(text)
+	}
+
+	removeTodo = (id) => {
+		this.props.actions.removeTodo(id)
+	}
 
   render() {
   	return (
 		<div>
-			<TodoList todos={this.props.todos} />
-			<DumpInput onAddTodo={::this.onAddTodo} />
+			<TodoList todos={this.props.todos} onRemoveTodo={this.removeTodo} />
+			<DumpInput onAddTodo={this.addTodo} />
 		</div>
 	  )
 	}
@@ -26,6 +30,6 @@ export default class TodoApp extends Component {
 export default connect(
 	state => ({todos: state.todos}),
 	dispatch => ({actions: bindActionCreators(TodoActions, dispatch)})
-)(TodoApp)
+)(Todo)
 
-//export default TodoApp
+//export default Todo

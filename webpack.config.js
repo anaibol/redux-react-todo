@@ -8,7 +8,7 @@ module.exports = {
      "./app/app.js"
    ],
  
-
+  devtool: 'source-map',
   output: {
     filename: "app.js",
     path: __dirname + "/dist",
@@ -26,5 +26,5 @@ module.exports = {
   plugins: [  
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
-  ],
+  ]
 }
