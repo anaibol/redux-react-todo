@@ -18,6 +18,7 @@ export default class Todo extends Component {
 	}
 
   render() {
+		console.log(this.props.todos)
   	return (
 		<div>
 			<TodoList todos={this.props.todos} onRemoveTodo={this.removeTodo} />
