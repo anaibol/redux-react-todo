@@ -9,21 +9,21 @@ import * as TodoActions from '../actions/todo'
 //@connect(state => ({todos: state.todos}))
 export default class Todo extends Component {
 
-	addTodo = (text) => {
+	addTodo(text) {
 		this.props.actions.addTodo(text)
 	}
 
-	removeTodo = (id) => {
+	removeTodo(id) {
 		this.props.actions.removeTodo(id)
 	}
 
   render() {
 		console.log(this.props.todos)
   	return (
-		<div>
-			<TodoList todos={this.props.todos} onRemoveTodo={this.removeTodo} />
-			<DumpInput onAddTodo={this.addTodo} />
-		</div>
+			<div>
+				<TodoList todos={this.props.todos} onRemoveTodo={::this.removeTodo} />
+				<DumpInput onAddTodo={::this.addTodo} />
+			</div>
 	  )
 	}
 }

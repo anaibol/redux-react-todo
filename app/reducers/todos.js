@@ -24,7 +24,7 @@ export default (state = initialState, {type, ...payload}) => {
 
   const reducer = actions[camelCase(type)]
   const returnState = (reducer) ? reducer(state, payload) : state
-  return returnState.toJS()
+  return returnState //.toJS()
 }
 
 //reducer.apply(state, ["1"])
