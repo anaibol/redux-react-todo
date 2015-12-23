@@ -8,28 +8,23 @@ import * as TodoActions from '../actions/todo'
 
 //@connect(state => ({todos: state.todos}))
 export default class Todo extends Component {
-
-	addTodo(text) {
-		this.props.actions.addTodo(text)
-	}
-
-	removeTodo(id) {
-		this.props.actions.removeTodo(id)
-	}
+	addTodo = text => this.props.actions.addTodo(text)
+	removeTodo = id => this.props.actions.removeTodo(id)
 
   render() {
-		console.log(this.props.todos)
+		console.log(this.props.actions.addTodo(123))
+
   	return (
 			<div>
-				<TodoList todos={this.props.todos} onRemoveTodo={::this.removeTodo} />
-				<DumpInput onAddTodo={::this.addTodo} />
+				<TodoList todos={this.props.todos} onRemoveTodo={this.removeTodo} />
+				<DumpInput onAddTodo={this.addTodo} />
 			</div>
 	  )
 	}
 }
 
 export default connect(
-	state => ({todos: state.todos}),
+	state => (state),
 	dispatch => ({actions: bindActionCreators(TodoActions, dispatch)})
 )(Todo)
 
