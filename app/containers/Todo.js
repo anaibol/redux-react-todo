@@ -6,10 +6,15 @@ import TodoList from '../components/TodoList'
 import DumpInput from '../components/DumpInput'
 import * as TodoActions from '../actions/todo'
 
+import { createDevTools } from 'redux-devtools';
+
+import LogMonitor from 'redux-devtools-log-monitor';
+import DockMonitor from 'redux-devtools-dock-monitor';
+
 //@connect(state => ({todos: state.todos}))
 export default class Todo extends Component {
-	addTodo = text => this.props.actions.addTodo(text)
-	removeTodo = id => this.props.actions.removeTodo(id)
+	addTodo = text => this.props.actions.addTodo(text);
+	removeTodo = id => this.props.actions.removeTodo(id);
 
   render() {
 		console.log(this.props.actions.addTodo(123))
