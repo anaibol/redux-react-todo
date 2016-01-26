@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { bindActionCreators} from 'redux'
 import { connect, Provider } from 'react-redux'
 import TodoList from '../components/TodoList'
-import DumpInput from '../components/DumpInput'
+import TodoInput from '../components/TodoInput'
 import * as TodoActions from '../actions/todo'
 
 import { createDevTools } from 'redux-devtools'
@@ -16,7 +16,7 @@ export default class Todo extends Component {
 	addTodo = text => {
 		console.log(text);
 		this.props.actions.addTodo(text)
-		console.log('addTodo action dispatched');
+		console.log('addTodo action dispatched')
 	};
 	removeTodo = id => this.props.actions.removeTodo(id);
 
@@ -26,7 +26,7 @@ export default class Todo extends Component {
   	return (
 			<div>
 				<TodoList todos={this.props.todos} onRemoveTodo={this.removeTodo} />
-				<DumpInput onAddTodo={this.addTodo} />
+				<TodoInput onAddTodo={this.addTodo} />
 			</div>
 	  )
 	}

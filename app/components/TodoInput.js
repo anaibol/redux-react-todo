@@ -10,13 +10,14 @@ export default class DumpInput extends Component {
 	// 	this.state.value = ''
 	// };
 
-	onAddTodo = v => {
-		console.log(v);
+	onAddTodo = text => {
+		console.log(text)
 
-		if (v.target.value) {
-			this.props.onAddTodo(v)
-		}	else {
+		if (!text) {
+			// return
 			this.props.onAddTodo(this.refs.textInput.value)
+		}	else {
+			this.props.onAddTodo(v)
 		}
 	};
 
@@ -36,7 +37,7 @@ export default class DumpInput extends Component {
 		return (
 			<div>
 				<input ref="textInput" onBlur={this.blur} onKeyDown={this.keyDown} placeholder="Input text" />
-				<button onClick={this.onAddTodo}>Add todo</button>
+				<button onClick={this.onAddTodo.bind(this, null)}>Add todo</button>
 			</div>
 		)
 	}
