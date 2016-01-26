@@ -1,4 +1,4 @@
-import {ADD_TODO, REMOVE_TODO} from '../constants/todo'
+import { ADD_TODO, REMOVE_TODO } from '../constants/todo'
 // import {List, Map} from 'immutable'
 import camelCase from 'camel-case'
 

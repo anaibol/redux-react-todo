@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 
-export default ({todo, id, onRemoveTodo}) => (
+export default ({ todo, id, onRemoveTodo }) => (
     <li>{todo} <button onClick={onRemoveTodo.bind(this, id)}>X</button></li>
 )
