@@ -9,10 +9,8 @@ import { persistStore, autoRehydrate } from 'redux-persist'
 import reduxPersistImmutable from 'redux-persist-immutable'
 
 import Todo from './containers/Todo'
-// const store = createStore(todos)
 
 const finalCreateStore = compose(DevTools.instrument())(createStore);
-
 const store = autoRehydrate()(finalCreateStore)(todos)
 // persistStore(store, {transforms: [reduxPersistImmutable]})
 // persistStore(store)
