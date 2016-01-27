@@ -7,7 +7,7 @@ module.exports = {
      'webpack/hot/only-dev-server',
      "./app/app.js"
    ],
- 
+
   devtool: 'source-map',
   output: {
     filename: "app.js",
@@ -15,6 +15,13 @@ module.exports = {
   },
 
   module: {
+    preLoaders: [
+      {
+        test: /\.jsx$/,
+        exclude: /bundle\.js$/,
+        loaders: ["eslint-loader"],
+      }
+    ],
     loaders: [
       {
         test: /\.js$/,
@@ -23,7 +30,7 @@ module.exports = {
       }
     ],
   },
-  plugins: [  
+  plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ]
