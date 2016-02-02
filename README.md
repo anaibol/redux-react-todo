@@ -4,7 +4,7 @@ This repo is a example of a todo app to use as a boilerplate and to learn how re
 
 Using:
 
-+ React 0.14
++ React
 + Redux
 + Webpack
-+ ES6 (Babel 6)
++ ES6 / ES7/ ES2015 / Babel
