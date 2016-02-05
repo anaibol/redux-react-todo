@@ -11,7 +11,7 @@ module.exports = {
   devtool: 'source-map',
   output: {
     filename: "app.js",
-    path: __dirname + "/dist",
+    path: __dirname + "/dist"
   },
 
   module: {
@@ -19,14 +19,14 @@ module.exports = {
       {
         test: /\.jsx$/,
         exclude: /bundle\.js$/,
-        loaders: ["eslint-loader"],
+        loaders: ["eslint-loader"]
       }
     ],
     loaders: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loaders: ["babel-loader"],
+        loaders: ["babel-loader"]
       }
     ],
   },

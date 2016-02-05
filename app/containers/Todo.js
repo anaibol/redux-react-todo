@@ -2,39 +2,41 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { bindActionCreators} from 'redux'
 import { connect, Provider } from 'react-redux'
-import TodoList from '../components/TodoList'
-import TodoInput from '../components/TodoInput'
+import List from '../components/List'
+import Input from '../components/Input'
 import * as TodoActions from '../actions/todo'
 
-import { createDevTools } from 'redux-devtools'
+// import { createDevTools } from 'redux-devtools'
 
-import LogMonitor from 'redux-devtools-log-monitor'
-import DockMonitor from 'redux-devtools-dock-monitor'
+// import LogMonitor from 'redux-devtools-log-monitor'
+// import DockMonitor from 'redux-devtools-dock-monitor'
 
 //@connect(state => ({todos: state.todos}))
-export default class Todo extends Component {
-	addTodo = text => {
-		console.log(text);
-		this.props.actions.addTodo(text)
-		console.log('addTodo action dispatched')
-	};
-	removeTodo = id => this.props.actions.removeTodo(id);
+// export default class Todo extends Component {
+//   render() {
+// 		const { todos } = this.props
+// 		const { addTodo, removeTodo } = this.props.actions
+//
+//   	return (
+// 			<div>
+// 				<List todos={todos} onRemoveTodo={removeTodo} />
+// 				<Input onAddTodo={addTodo} />
+// 			</div>
+// 	  )
+// 	}
+// }
 
-  render() {
-		console.log(this.props.actions.addTodo(123))
-
-  	return (
-			<div>
-				<TodoList todos={this.props.todos} onRemoveTodo={this.removeTodo} />
-				<TodoInput onAddTodo={this.addTodo} />
-			</div>
-	  )
-	}
-}
-
+const Todo = ({todos, actions}) => (
+	<div>
+		<List todos={todos} onRemoveTodo={actions.removeTodo} />
+		<Input onAddTodo={actions.addTodo} />
+	</div>
+)
 export default connect(
 	state => (state),
 	dispatch => ({actions: bindActionCreators(TodoActions, dispatch)})
 )(Todo)
+
+// export default connect()(Todo)
 
 //export default Todo

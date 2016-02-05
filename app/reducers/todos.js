@@ -6,8 +6,7 @@ const initialState = {
   todos: ['make a sandwich', 'kiss a grenouille', 'build a todo app']
 }
 
-const todos = (state = initialState, action) => {
-  console.log(action.type)
+export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO:
       return {
@@ -23,6 +22,3 @@ const todos = (state = initialState, action) => {
       return state
   }
 }
-
-export default todos
-//reducer.apply(state, ["1"])
