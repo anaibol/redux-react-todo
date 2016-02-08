@@ -2,12 +2,16 @@ var webpack = require('webpack');
 
 module.exports = {
   // context: __dirname + "/app",
-  entry: [
-   'webpack-dev-server/client?http://0.0.0.0:8080',
-   'webpack/hot/only-dev-server',
-   "./app/app.js"
-  ],
+   entry: [
+     'webpack-dev-server/client?http://0.0.0.0:8080',
+     'webpack/hot/only-dev-server',
+     "./app/app.js"
+   ],
   devtool: 'source-map',
+  output: {
+    filename: "app.js",
+    path: __dirname + "/dist"
+  },
   resolve: {
     extensions: ['', '.jsx', '.scss', '.js', '.json'],
     alias: {
@@ -15,23 +19,24 @@ module.exports = {
       'react-dom': 'preact-compat'
     }
   },
-
-  output: {
-    filename: "app.js",
-    path: __dirname + "/dist",
-  },
-
   module: {
+    preLoaders: [
+      {
+        test: /\.jsx$/,
+        exclude: /bundle\.js$/,
+        loaders: ["eslint-loader"]
+      }
+    ],
     loaders: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loaders: ["babel-loader"],
+        loaders: ["babel-loader"]
       }
     ],
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
-  ],
+  ]
 }

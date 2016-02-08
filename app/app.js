@@ -1,19 +1,29 @@
 //import {h, Component, render} from 'preact'
-import React from 'preact-compat'
-import ReactDOM from 'preact-compat'
-import {createStore} from 'redux'
-import {Provider} from 'react-redux'
-import todoReducer from './reducers/todo'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { createStore, compose } from 'redux'
+import { Provider } from 'react-redux'
 
-const initialState = {
-	todos: ['make a sandwich', 'kiss a grenouille']
-}
+import todos from './reducers/todos'
+// import DevTools from './containers/DevTools'
+// import { persistStore, autoRehydrate } from 'redux-persist'
+// import reduxPersistImmutable from 'redux-persist-immutable'
 
-import TodoApp from './containers/TodoApp'
-const store = createStore(todoReducer, initialState)
+import Todo from './containers/Todo'
 
+const finalCreateStore = compose(
+  // DevTools.instrument(),
+  window.devToolsExtension ? window.devToolsExtension() : f => f
+)(createStore);
+// const store = autoRehydrate()(finalCreateStore)(todos)
+const store = createStore(todos)
+
+// persistStore(store, {transforms: [reduxPersistImmutable]})
+// persistStore(store)
+
+// <DevTools />
 ReactDOM.render(
   <Provider store={store}>
-    <TodoApp />
+    <Todo />
   </Provider>,
  document.getElementById('app'));
