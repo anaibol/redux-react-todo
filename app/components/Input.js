@@ -13,14 +13,11 @@ export default class Input extends Component {
 	};
 
   render() {
-		// <input ref={node => input = node} />
   	return (
 			<form onSubmit={this.onSubmit}>
 				<input ref="textInput" placeholder="Input text" />
 				<button type="submit">Add todo</button>
 			</form>
 	  )
-
-
 	}
 }
