@@ -13,11 +13,7 @@ module.exports = {
     path: __dirname + "/dist"
   },
   resolve: {
-    extensions: ['', '.jsx', '.scss', '.js', '.json'],
-    alias: {
-      'react': 'preact-compat',
-      'react-dom': 'preact-compat'
-    }
+    extensions: ['', '.jsx', '.scss', '.js', '.json']
   },
   module: {
     preLoaders: [
