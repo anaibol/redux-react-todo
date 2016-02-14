@@ -13,9 +13,3 @@ export function removeTodo(id) {
     id
   }
 }
-
-
-//export default {
-//
-//
-//}

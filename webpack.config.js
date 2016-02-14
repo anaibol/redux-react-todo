@@ -14,16 +14,20 @@ module.exports = {
     path: __dirname + "/dist"
   },
   resolve: {
-    extensions: ['', '.css', '.scss', '.js', '.jsx', '.json']
+    extensions: ['', '.css', '.scss', '.js', '.jsx', '.json'],
+    alias: {
+      'react': 'preact-compat',
+      'react-dom': 'preact-compat'
+    }
   },
   module: {
-    // preLoaders: [
-    //   {
-    //     test: /\.js$/,
-    //     exclude: /bundle\.js$/,
-    //     loaders: ["eslint-loader"]
-    //   }
-    // ],
+    preLoaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loaders: ["eslint-loader"]
+      }
+    ],
     loaders: [
       {
         test: /\.js$/,
@@ -48,14 +52,22 @@ module.exports = {
 		}),
 		new webpack.optimize.OccurenceOrderPlugin(),
 		new webpack.optimize.UglifyJsPlugin({
-			output: { comments: false }
+			output: { comments: false },
+      compress: {
+        warnings: false
+      }
 		})
 	]),
   stats: { colors: true },
 	devtool: 'source-map',
 	devServer: {
 		port: process.env.PORT || 8080,
-		contentBase: './src',
-		historyApiFallback: true
+		contentBase: './app/',
+		historyApiFallback: true,
+    progress: true,
+    watch: true,
+    colors: true,
+    hot: true,
+    inline: true
 	}
 }

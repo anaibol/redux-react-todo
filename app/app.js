@@ -1,4 +1,3 @@
-//import {h, Component, render} from 'preact'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { createStore, compose } from 'redux'
@@ -11,10 +10,10 @@ import todos from './reducers/todos'
 
 import Todo from './containers/Todo'
 
-const finalCreateStore = compose(
-  // DevTools.instrument(),
-  window.devToolsExtension ? window.devToolsExtension() : f => f
-)(createStore);
+// const finalCreateStore = compose(
+//   // DevTools.instrument(),
+//   window.devToolsExtension ? window.devToolsExtension() : f => f
+// )(createStore);
 // const store = autoRehydrate()(finalCreateStore)(todos)
 const store = createStore(todos)
 
@@ -26,4 +25,4 @@ ReactDOM.render(
   <Provider store={store}>
     <Todo />
   </Provider>,
- document.getElementById('app'));
+ document.getElementById('app'))
