@@ -1,4 +1,6 @@
 var webpack = require('webpack');
+// var ExtractTextPlugin = require('extract-text-webpack-plugin');
+// var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   // context: __dirname + "/app",
@@ -7,32 +9,53 @@ module.exports = {
      'webpack/hot/only-dev-server',
      "./app/app.js"
    ],
-  devtool: 'source-map',
   output: {
     filename: "app.js",
     path: __dirname + "/dist"
   },
   resolve: {
-    extensions: ['', '.jsx', '.scss', '.js', '.json']
+    extensions: ['', '.css', '.scss', '.js', '.jsx', '.json']
   },
   module: {
-    preLoaders: [
-      {
-        test: /\.jsx$/,
-        exclude: /bundle\.js$/,
-        loaders: ["eslint-loader"]
-      }
-    ],
+    // preLoaders: [
+    //   {
+    //     test: /\.js$/,
+    //     exclude: /bundle\.js$/,
+    //     loaders: ["eslint-loader"]
+    //   }
+    // ],
     loaders: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
         loaders: ["babel-loader"]
-      }
+      },
+      // {
+			// 	test: /\.s?css$/,
+			// 	loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass?sourceMap!toolbox')
+			// }
     ],
   },
-  plugins: [
+  plugins: ([
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ]
+		new webpack.NoErrorsPlugin(),
+		// new ExtractTextPlugin('style.css', { allChunks: true }),
+		new webpack.optimize.DedupePlugin(),
+		// new HtmlWebpackPlugin()
+	]).concat(process.env.ENVIRONMENT==='production' ? [] : [
+		new webpack.DefinePlugin({
+			'process.env.NODE_ENV': JSON.stringify('production')
+		}),
+		new webpack.optimize.OccurenceOrderPlugin(),
+		new webpack.optimize.UglifyJsPlugin({
+			output: { comments: false }
+		})
+	]),
+  stats: { colors: true },
+	devtool: 'source-map',
+	devServer: {
+		port: process.env.PORT || 8080,
+		contentBase: './src',
+		historyApiFallback: true
+	}
 }
