@@ -15,10 +15,6 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.css', '.scss', '.js', '.jsx', '.json'],
-    alias: {
-      'react': 'preact-compat',
-      'react-dom': 'preact-compat'
-    }
   },
   module: {
     preLoaders: [

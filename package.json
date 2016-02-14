@@ -50,8 +50,6 @@
   "dependencies": {
     "camel-case": "^1.2.2",
     "immutable": "^3.7.6",
-    "preact": "^3.4.0",
-    "preact-compat": "^0.7.1",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.3.0",
